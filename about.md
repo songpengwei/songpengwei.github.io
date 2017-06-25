@@ -3,8 +3,7 @@ layout: page
 title: About
 ---
 
-Hello.
 
-This will be your About page. Anything about you, it should be written here in details. You may describe your bio here like who you are, what you do, your intention, social site hyperlinks and how people can contact you, etc.
+好读书 不求甚解 每有会意 便欣然忘食
 
-**Less is more..**
+**大繁至简**
