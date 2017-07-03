@@ -9,7 +9,7 @@ Random一下，就从分布式文件系统（DFS）开始吧。
 DFS即分布式文件系统，集合多台机器存储在预定义位置上的一组文件作为存储构件，在此基础上实现一些分布式操作，从而对外抽象出一套基本文件读写API。
 
 
-# `Block` #
+# Block #
 ***
 ### blkid和len ###
 **Block**是HDFS的文件存储的基本单位，有两个关键属性`blkid` 和`len`，前者用来标识一个操作系统上的文件，并且通过`"blk_" + String.valueOf(blkid)`拼接出文件名；后者是该文件以字节为单位的长度。
@@ -31,7 +31,7 @@ static {                                      // register a ctor
 实现`Writable`利用Java的序列化接口（`DataOutput`），实现Block基本字段的序列化和反序列化。
 每个待序列化类单独实现自己一对序列化和反序列化函数，是一个常用的基本设计，我在实习写桌面程序的时候，想将一些控件信息存储为xml，用的想法和这个是相同的，但是做的不好的事没有定义出这个Writable接口作为对这个行为的抽象。
 
-# `BlockCommand` #
+# BlockCommand #
 ***
 一个命令（instruction）参数的封装，该命令作用于某个`DataNode`下的一系列Blocks；有两种操作，移动这组Blocks到另外一个`DataNode`，或者标记改组Blocks为失效状态。
 
@@ -54,7 +54,7 @@ DatanodeInfo targets[][];
 对一个简单的命令基本信息的封装，用构造函数接受参数，确定操作类型和操作对象；用标志变量+数组对象来进行实现。
 将一组数据按照某种语义捆绑在一起，在函数间传递时也方便，复用性也更好。
 
-# `LocatedBlock` #
+# LocatedBlock #
 ***
 一个数据对，包含一个`Block`和其几个replicate所在的`DataNode`的信息。
 ```Java
