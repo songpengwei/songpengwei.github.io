@@ -73,8 +73,7 @@ DatanodeInfo locs[];
 包含了一个`DataNode`的状态信息（总大小，剩余大小，上次更新时间），用名字（自定义的`UTF8`存储的`host:port`）作为ID，并且维持了其上所有`Block`的引用，以查找树（`TreeSet`应该是红黑树，以`Block`的blkid进行排序）的形式组织。 
 
 ### 关键函数 ###
-* 更新状态信息（**一次心跳**。名字起得好啊——好像DataNode在说，“我还活着，我的基本体征如下，balabala”，传神好记。）
-
+更新状态信息（**一次心跳**。名字起得好啊——好像DataNode在说，“我还活着，我的基本体征如下，balabala”，传神好记。
 ```Java
 public void updateHeartbeat(long capacity, long remaining) {
    this.capacityBytes = capacity;
@@ -85,6 +84,7 @@ public void updateHeartbeat(long capacity, long remaining) {
 **实现了`Comparable`和`Writable`（比较有意思的是，blocks没有被序列化）接口**
 
 ## DataNodeReport ##
+***
 一个[POJO](https://martinfowler.com/bliki/POJO.html)，哈哈，想起这个名字的由来就想笑，马大叔真是有才的别具猥琐。看它的字段就知道，这是心跳来源+心跳信息的一个简单封装，每个字段都具有包级访问权限，还提供了几个public的读方法。
 ```Java
 String name;
