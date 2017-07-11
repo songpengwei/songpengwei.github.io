@@ -9,7 +9,7 @@ Random一下，就从分布式文件系统（DFS）开始吧。
 DFS即分布式文件系统，集合多台机器存储在预定义位置上的一组文件作为存储构件，在此基础上实现一些分布式操作，从而对外抽象出一套基本文件读写API。
 
 
-## Block ##
+## <span id="block">Block</span> ##
 ***
 ### blkid和len ###
 **Block**是HDFS的文件存储的基本单位，有两个关键属性`blkid` 和`len`，前者用来标识一个操作系统上的文件，并且通过`"blk_" + String.valueOf(blkid)`拼接出文件名；后者是该文件以字节为单位的长度。
@@ -34,7 +34,7 @@ static {                                      // register a ctor
 **实现了`Comparable`（大概是为了被索引时可比较）和`Writable`接口**
 
 
-## BlockCommand ##
+## <span id="block-command">BlockCommand<span> ##
 ***
 一个命令（instruction）参数的封装，该命令作用于某个`DataNode`下的一系列Blocks；有两种操作，移动这组Blocks到另外一个`DataNode`，或者标记改组Blocks为失效状态。
 
@@ -57,7 +57,7 @@ DatanodeInfo targets[][];
 对一个简单的命令基本信息的封装，用构造函数接受参数，确定操作类型和操作对象；用标志变量+数组对象来进行实现。
 将一组数据按照某种语义捆绑在一起，在函数间传递时也方便，复用性也更好。
 
-## LocatedBlock ##
+## <span id="located-block">LocatedBlock</span> ##
 ***
 一个数据对，包含一个`Block`和其几个replicate所在的`DataNode`的信息。
 ```Java
@@ -68,7 +68,7 @@ DatanodeInfo locs[];
 
 **实现了`Writable`接口**。
 
-## DataNodeInfo ##
+## <span id="datanode-info">DataNodeInfo</span> ##
 ***
 包含了一个`DataNode`的状态信息（总大小，剩余大小，上次更新时间），用名字（自定义的`UTF8`存储的`host:port`）作为ID，并且维持了其上所有`Block`的引用，以查找树（`TreeSet`应该是红黑树，以`Block`的blkid进行排序）的形式组织。 
 
@@ -83,7 +83,7 @@ public void updateHeartbeat(long capacity, long remaining) {
 ```
 **实现了`Comparable`和`Writable`（比较有意思的是，blocks没有被序列化）接口**
 
-## DataNodeReport ##
+## <span id="datanode-report">DataNodeReport</span> ##
 ***
 一个[POJO](https://martinfowler.com/bliki/POJO.html)，哈哈，想起这个名字的由来就想笑，马大叔真是有才的别具猥琐。看它的字段就知道，这是心跳来源+心跳信息的一个简单封装，每个字段都具有包级访问权限，还提供了几个public的读方法。
 ```Java
