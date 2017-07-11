@@ -121,7 +121,7 @@ iframe {
 }
 ul,
 ol {
-  margin: 40px 0;
+  margin: 20px 0;
   padding-left: 50px;
   li {
     word-wrap: break-word;
@@ -129,6 +129,9 @@ ol {
   img {
     margin: 40px 0;
     border-radius: 5px;
+  }
+  ul, ol {
+      margin: 10px;
   }
 }
 sup {

@@ -11,7 +11,7 @@ updated: 2017-07-11 20:06
 2. 执行命令。
 	1. 客户端读写Blocks
 	2. 让其他DataNode复制Blocks
-	3.  
+	3. 删除某些Blocks
 	
 
 
