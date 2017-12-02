@@ -3,10 +3,10 @@ title: Android 学习笔记一：搜索框的实现
 updated: 2017-12-02 17:36
 ---
 
-###目标
+### 目标
 输入关键字，实时显示搜索结果。
 
-###过程
+### 过程
 从[官方文档](https://developer.android.com/guide/topics/search/search-dialog.html)入手，由于初入门，相关术语懂得少，而该文档又非代码级实现，导致没能完整搭起搜索的架子。该文档主要讲了以下几点：
 1. 两种实现方式，search dialog和search widget；对于Android 3.0 以后的机器，推荐使用后者，较为灵活。
 2. 三个主要组件：
@@ -26,10 +26,10 @@ updated: 2017-12-02 17:36
 等于搜索过程的三个环节都没有搞清楚，一脸懵逼。
 
 于是搜索关键词 SearchView action bar，找到一篇帖子：[Implementing SearchView in action bar](https://stackoverflow.com/questions/21585326/implementing-searchview-in-action-bar)，反复琢磨，才弄清楚了以上几个问题。
+
 首先，对于触发搜索，该回答使用的是具有App Bar的Activity作为SearchableActivity，并且在复写onCreateOptionsMenu函数，实例化其参数menu，并且将SearchView作为其一个item。如此一来，SearchableActivity的右上角就会有搜索按钮。相关代码如下：
 **res\menu\search.xml:**
-
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -40,8 +40,8 @@ updated: 2017-12-02 17:36
 
 </menu>
 ```
-SearchableActivity.java
-```
+**SearchableActivity.java**
+```Java
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
@@ -109,7 +109,7 @@ SearchableActivity.java
 ```
 
 ResultAdapter.java
-```
+```Java
 public class ResultAdapter extends CursorAdapter {
     private List<String> items;
     private TextView text;
@@ -133,8 +133,8 @@ public class ResultAdapter extends CursorAdapter {
     }
 }
 ```
-SearchableActivity.java
-```
+**SearchableActivity.java**
+```Java
 private void doMySearch(String query){
     String[] columns = new String[] { "_id", "text" };
     Object[] temp = new Object[] { 0, "default" };
@@ -154,7 +154,7 @@ private void doMySearch(String query){
 }
 ```
 
-###参考资料：
+### 参考资料：
 1. Android官方文档，https://developer.android.com/guide/topics/search/search-dialog.html
 2. Stack Overflow回答，https://stackoverflow.com/questions/21585326/implementing-searchview-in-action-bar
 3. 官方视频，https://www.youtube.com/watch?v=9OWmnYPX1uc
