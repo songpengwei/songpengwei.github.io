@@ -1,5 +1,5 @@
 ---
-title: Android 学习笔记二：代码组织
+title: Android 学习笔记（二）：代码组织
 updated: 2017-12-12 21:32
 ---
 

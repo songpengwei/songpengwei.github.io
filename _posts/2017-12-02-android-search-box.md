@@ -1,5 +1,5 @@
 ---
-title: Android 学习笔记一：搜索框的实现
+title: Android 学习笔记（一）：搜索框的实现
 updated: 2017-12-02 17:36
 ---
 

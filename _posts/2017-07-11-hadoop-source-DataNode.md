@@ -1,5 +1,5 @@
 ---
-title: Hadoop 源码阅读之DFS（二）DataNode
+title: Hadoop 源码阅读之DFS（二）：DataNode
 updated: 2017-07-11 20:06
 ---
 
