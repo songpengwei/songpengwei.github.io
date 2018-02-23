@@ -20,9 +20,9 @@ updated: 2017-12-02 17:36
 	* 呈现结果（Present the results）（困惑点3）
 
 我想使用Search Widget方式，主要遇到以下几个困惑点：
-1. 如何在Activity中触发搜索，就是AppBar右上角的搜索图标如何做出来。
-2. 如果使用Intent的查询数据，如示例一般，应该不能做到实时匹配输入字符。我猜想应该有listener之类的，但是例子没给。
-3. 如何呈现结果，文档建议让SearchAbleActivity继承ListView来实现，但是具体细节，如怎么接受结果，传递给ListView，都没有提。
+1. 如何在`Activity`中触发搜索，就是AppBar右上角的搜索图标如何做出来。
+2. 如果使用`Intent`的查询数据，如示例一般，应该不能做到实时匹配输入字符。我猜想应该有listener之类的，但是例子没给。
+3. 如何呈现结果，文档建议让`SearchAbleActivity`继承`ListView`来实现，但是具体细节，如怎么接受结果，传递给`ListView`，都没有提。
 等于搜索过程的三个环节都没有搞清楚，一脸懵逼。
 
 于是搜索关键词 SearchView action bar，找到一篇帖子：[Implementing SearchView in action bar](https://stackoverflow.com/questions/21585326/implementing-searchview-in-action-bar)，反复琢磨，才弄清楚了以上几个问题。
