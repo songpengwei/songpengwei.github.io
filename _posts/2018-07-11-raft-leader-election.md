@@ -1,5 +1,5 @@
 ---
-title: 6.824 - raft 实现
+title: 6.824 - raft 实现（一）：leader选举
 updated: 2018-07-11 22:13
 tag: raft, 6.824 
 ---
@@ -124,7 +124,7 @@ if !check(arg) {
 
 具体到我的情况，就是在candidate要票的时候，如果得到多数票，就直接变为leader；如果后面仍有人给票，我会判断当前身份是否已经是leader，如果是就直接返回，不在意这些票了，的确好邪恶。。于是，你懂得，返回前忘还回锁了。代码如下，有删节。
 
-```Go
+```go
 go func(server int, args RequestVoteArgs) {
 	// use args to request vote
 	reply := RequestVoteReply{}
